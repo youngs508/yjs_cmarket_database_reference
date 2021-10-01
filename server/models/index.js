@@ -1,6 +1,16 @@
-const db = require("../db");
+const db = require('../db');
 
 module.exports = {
+  items: {
+    get: (callback) => {
+      // TODO: Cmarket의 모든 상품을 가져오는 함수를 작성하세요
+      const queryString = `SELECT * FROM items`;
+
+      db.query(queryString, (error, result) => {
+        callback(error, result);
+      });
+    },
+  },
   orders: {
     get: (userId, callback) => {
       // TODO: 해당 유저가 작성한 모든 주문을 가져오는 함수를 작성하세요
@@ -34,16 +44,6 @@ module.exports = {
           });
         }
         callback(error, null);
-      });
-    },
-  },
-  items: {
-    get: (callback) => {
-      // TODO: Cmarket의 모든 상품을 가져오는 함수를 작성하세요
-      const queryString = `SELECT * FROM items`;
-
-      db.query(queryString, (error, result) => {
-        callback(error, result);
       });
     },
   },
